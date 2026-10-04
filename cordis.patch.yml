@@ -1,0 +1,18 @@
+# Workspace folders - the bundle patch the harness loads for this plugin.
+#
+# The plugin is installed as a bundle (`dsh plugin add <tarball>` via
+# install.ps1): the harness adds the package to the web profile and loads
+# THIS file as its overlay patch. The row references the bundle's own
+# package (`dsh-workspace-folders`), resolved from the profile's
+# node_modules.
+#
+# `id: workspace-folders` is load-bearing: the settings service publishes
+# the row's volatile Config schema under this id, the Plugins page renders
+# its form (the enable switch lives there), and the client reads its
+# configForms store under the same id.
+- insert:
+  - id: workspace-folders
+    name: dsh-workspace-folders
+    config:
+      enabled: true
+      chatSorting: true
